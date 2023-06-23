@@ -5,12 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/app/vistas/style.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+  <link rel="stylesheet" href="{{ url_for('static', filename='estilos/style.css') }}">
   <title>LOBBY</title>
-  <link rel="stylesheet" href="/app/estilos/style.css">
 </head>
 
 <body>
@@ -25,7 +23,7 @@
             <i class=""></i>
           </button>
           <button type="button" class="btn2">
-            <a href="/app/vistas/registro.html">REGISTRATE</a>
+            <a href="{{ url_for('registro') }}">REGISTRATE</a>
             <i class=""></i>
           </button>
         </div>

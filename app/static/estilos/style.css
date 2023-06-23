@@ -1,5 +1,5 @@
 body{
-    background-image: url(/app/archivos/Lobby.jpg);
+    background-image: url(../archivos/Lobby.jpg);
 }
 h1{
     color: aliceblue;

@@ -1,0 +1,13 @@
+
+.custom-input {
+    box-shadow: 0px 0px 0px 7px rgba(127, 111, 129, 0.774);
+    -webkit-box-shadow: 0px 0px 0px 7px rgba(127, 111, 129, 0.774);
+    -moz-box-shadow: 0px 0px 0px 7px rgba(127, 111, 129, 0.774);
+  }
+  body {
+  background-image: url("../archivos/fondo.jpeg");
+  background-size: cover; /* Adjusts the image size to cover the container */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-position: center center; /* Centers the image horizontally and vertically */
+  /* Additional background properties if needed */
+}
