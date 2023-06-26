@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
  
-  <title>Login</title>
+  <title>Forget password</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='estilos/styleLogin.css') }}"/>
 </head>
 <body>
@@ -10,25 +10,18 @@
         <div class="form-box">
             <div class="form-value">
                 <form action="">
-                    <h2>Login</h2>
+                    <h2>Contraseña</h2>
                     <div class="inputbox">
                         <ion-icon name="person"></ion-icon>
                         <input type="email" required>
-                        <label for="">Usuario</label>
+                        <label for="">Email</label>
                     </div>
                     <div class="inputbox">
                         <ion-icon name="lock-closed-outline"></ion-icon>
                         <input type="password" required>
-                        <label for="">Contraseña</label>
+                        <label for="">Nueva contraseña</label>
                     </div>
-                    <div class="forget">
-                        <label for=""><input type="checkbox">Recuerdame <br>
-                            <a href="{{ url_for('contraseña') }}">Olvide mi contraseña</a></label>
-                    </div>
-                    <button> <a href="#">Entrar</a></button>
-                    <div class="register">
-                        <p>No tengo cuenta <a href="{{ url_for('registro') }}">Registrarme</a></p>
-                    </div>
+                    <button> <a href="#">Enviar contraseña</a></button>
                 </form>
             </div>
         </div>
