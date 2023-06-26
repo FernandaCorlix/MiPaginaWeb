@@ -16,6 +16,10 @@ connectionPool = mysql.connector.pooling.MySQLConnectionPool(pool_name="my_pool"
 def home():
     return render_template('login.html')
 
+@app.route('/inicio')
+def inicio():
+    return render_template('index.html')
+
 @app.route('/registro')
 def registro():
     return render_template('registro.html')

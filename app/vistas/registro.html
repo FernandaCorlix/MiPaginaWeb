@@ -20,10 +20,7 @@
   <div class="d-flex flex-column align-items-center justify-content-center min-vh-80 pt-5">
     <form>
       <div class="mb-5">
-        <input type="text" class="form-control custom-input" id="exampleFormControlInput1" placeholder="Nombre">
-      </div>
-      <div class="mb-5">
-        <input type="text" class="form-control custom-input" id="exampleFormControlInput1" placeholder="Apellido">
+        <input type="text" name="nombre" class="form-control custom-input" id="exampleFormControlInput1" placeholder="Nombre de Usuario">
       </div>
       <select class="form-select custom-input mb-5" aria-label="Default select example">
         <option selected>Sexo</option>
@@ -33,6 +30,7 @@
       </select>
       <div class="mt-5 d-flex flex-column align-items-center justify-content-center">
       <button type="submit" class="btn btn-primary">Agregar</button>
+      <a href="{{ url_for('inicio') }}">Inicio</a>
       </div>
     </div>
   </form>
