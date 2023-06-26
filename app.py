@@ -10,5 +10,11 @@ def home():
 def registro():
     return render_template('registro.html')
 
+@app.route('/contraseña')
+def contraseña():
+    return render_template('contraseña.html')
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)
