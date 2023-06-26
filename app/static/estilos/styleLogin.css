@@ -11,8 +11,9 @@ section{
     align-items: center;
     min-height: 100vh;
     width: 100%;
-    
+
     background-image: url("../archivos/LOGIN.jpg")no-repeat;
+    background: url("../archivos/LOGIN.jpg");
     background-position: center;
     background-size: cover;
 }
@@ -62,7 +63,7 @@ top: -5px;
     outline: none;
     font-size: 1em;
     padding:0 35px 0 5px;
-    color: #fff;
+    color: #ffffff;
 }
 .inputbox ion-icon{
     position: absolute;
