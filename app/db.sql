@@ -6,13 +6,12 @@ USE volleyball;
 
 -- Create the Equipo table
 CREATE TABLE Equipo (
-  EquipoID INT PRIMARY KEY,
+  EquipoID INT AUTO_INCREMENT PRIMARY KEY,
   nombreEquipo VARCHAR(100)
 );
-
 -- Create the jugadores table
-CREATE TABLE jugadores (
-  id INT PRIMARY KEY,
+CREATE TABLE Jugadores (
+  id INT AUTO_INCREMENT  PRIMARY KEY ,
   NombreUsuario VARCHAR(100),
   contrasenia VARCHAR(50),
   sexo BOOLEAN,

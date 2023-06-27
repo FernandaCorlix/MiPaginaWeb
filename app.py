@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template,request,redirect
 import mysql.connector
 import config as c
 
@@ -20,9 +20,25 @@ def home():
 def inicio():
     return render_template('index.html')
 
-@app.route('/registro')
+@app.route('/registro', methods=['GET', 'POST'])
 def registro():
-    return render_template('registro.html')
+    if request.method == 'GET':
+        return render_template('registro.html')
+    elif request.method == 'POST':
+        usuario = request.form['nombre']
+        contrasenia = request.form['contrasenia']
+        sexo = request.form['sexo']
+        conexion = connectionPool.get_connection()
+        try:
+            cursor = conexion.cursor()
+            sql = "INSERT INTO Jugadores (NombreUsuario, contrasenia, sexo, esAdmin) VALUES (%s, %s, %s, %s)"
+            val = (usuario, contrasenia, sexo, False)
+            cursor.execute(sql, val)
+            conexion.commit()
+        finally:
+            if conexion:
+                conexion.close()
+        return redirect('/login')
 
 @app.route('/contraseña')
 def contraseña():

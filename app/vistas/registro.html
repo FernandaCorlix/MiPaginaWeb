@@ -18,18 +18,21 @@
     <h1 class="text-center text-white">Registrate</h1>
   </div>
   <div class="d-flex flex-column align-items-center justify-content-center min-vh-80 pt-5">
-    <form>
+    <form action="/registro" method="post">
       <div class="mb-5">
-        <input type="text" name="nombre" class="form-control custom-input" id="exampleFormControlInput1" placeholder="Nombre de Usuario">
+        <input type="text" name="nombre" class="form-control custom-input" id="exampleFormControlInput1" placeholder="Nombre de Usuario" required>
       </div>
-      <select class="form-select custom-input mb-5" aria-label="Default select example">
-        <option selected>Sexo</option>
+      <div class="mb-5">
+        <input type="password" name="contrasenia" class="form-control custom-input" id="exampleFormControlInput1" placeholder="Contraseña" required>
+      </div>
+      <select class="form-select custom-input mb-5" name = "sexo" aria-label="Default select example" required>
+        <option value = "" selected disabled>Sexo</option>
         <option value="1">Mujer</option>
         <option value="2">Hombre</option>
         <option value="3">Gamer</option>
       </select>
       <div class="mt-5 d-flex flex-column align-items-center justify-content-center">
-      <button type="submit" class="btn btn-primary">Agregar</button>
+      <button type="submit" class="btn btn-primary">Registrame</button>
       <a href="{{ url_for('inicio') }}">Inicio</a>
       </div>
     </div>
