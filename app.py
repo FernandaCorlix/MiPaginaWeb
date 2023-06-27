@@ -38,7 +38,7 @@ def registro():
         finally:
             if conexion:
                 conexion.close()
-        return redirect('/login')
+        return redirect('/')
 
 @app.route('/contraseña')
 def contraseña():
