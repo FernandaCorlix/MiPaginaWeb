@@ -44,7 +44,13 @@ def registro():
 def contraseña():
     return render_template('contraseña.html')
 
+@app.route('/jugadores')
+def jugadores():
+    return render_template('jugadores.html')
 
+@app.route('/listaDeEquipos')
+def listaDeEquipos():
+    return render_template('listaDeEquipos.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

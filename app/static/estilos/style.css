@@ -1,109 +1,126 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* Estilos para computadora */
+@media only screen and (min-width: 992px) {
+  body {
+    padding-top: 0; /* Ajusta el espacio para el navbar fijo en la parte superior */
+  }
 }
 
-body{
-    min-height: 100vh;
-    background-image: url("../archivos/lob.jpg")no-repeat;
-    background: url("../archivos/lob.jpg");
-    background-size: cover;
-    background-position: center;
-
+/* Estilos para dispositivos móviles */
+@media only screen and (max-width: 991px) {
+  body {
+    padding-top: 0; /* Ajusta el espacio para el navbar fijo en la parte superior */
+  }
 }
 
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 20px 40px;
-  }
-  
-  a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  .nav-link {
-    list-style: none;
-    margin: 20px 0;
-    border-bottom: 2px solid white;
-    width: 8rem;
-  }
-  
-  /* Navbar */
+.navbar {
+  background-color: #f9f8fa;
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+  color: #333;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #555;
+}
+
+@media only screen and (max-width: 767px) {
   .navbar {
-    background: rgb(20, 20, 20);
     position: fixed;
+    top: 0;
     width: 100%;
   }
-  
-  .flex-nav {
-    display: flex;
-    flex-direction: column;
+
+  body {
+    padding-top: 0; /* Ajusta el espacio para el navbar fijo en la parte superior */
+    
   }
-  
-  .nav-header span {
-    color: rgb(248, 104, 104);
+
+  .navbar-toggler {
+    background-color: #333;
+    border-color: #333;
   }
-  
-  .nav-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+  .navbar-toggler-icon {
+    background-color: #fff;
   }
-  
-  .nav-toggle {
-    border: transparent;
-    background: transparent;
-    color: white;
-    font-size: 1.5rem;
+
+  .navbar-collapse {
+    background-color: #f8f9fa;
+    padding: 10px;
+    position: fixed;
+    top: 56px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+    transform: translateX(100%);
   }
-  
-  .nav-links {
-    height: 0;
-    overflow: hidden;
+
+  .navbar-collapse.show {
+    transform: translateX(0);
   }
-  
-  .nav-open {
-    height: 100vh;
+
+  .navbar-nav .nav-link {
+    display: block;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
   }
-  
-  @media only screen and (min-width: 900px) {
-    .nav-toggle {
-      display: none;
-    }
-  
-    .nav-header {
-      display: block;
-    }
-  
-    .flex-nav {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 40px;
-    }
-  
-    .nav-links {
-      height: auto;
-    }
-  
-    ul {
-      text-align: center;
-    }
-  
-    .nav-link {
-      display: inline-block;
-      border-bottom: none;
-    }
-  
-    .nav-links span {
-      background: rgb(70, 70, 70);
-      padding: 8px 15px;
-      border-radius: 4px;
-    }
-  }
+}
+
+/* Agregar imagen */
+.jumbotron {
+  background-image: url("../archivos/lob.jpg");
+  background: url("../archivos/lob.jpg");
+  background-size: cover;
+  background-position: center;
+  color: floralwhite;
+  text-align: center;
+  padding: 100px 0;
+}
+
+.jumbotron h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  background: transparent;
+  border: 2px solid rgb(255, 247, 247);
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.jumbotron p {
+  font-size: 24px;
+  margin-bottom: 30px;
+  background: transparent;
+  border: 2px solid rgb(255, 247, 247);
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.jumbotron .btn {
+  font-size: 20px;
+  padding: 12px 30px;
+  background: transparent;
+  border: 2px solid rgb(255, 247, 247);
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
