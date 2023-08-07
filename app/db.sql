@@ -10,7 +10,7 @@ CREATE TABLE Equipo (
   nombreEquipo VARCHAR(100)
 );
 -- Create the jugadores table
-CREATE TABLE Jugadores (
+CREATE TABLE jugadores (
   id INT AUTO_INCREMENT  PRIMARY KEY ,
   NombreUsuario VARCHAR(100),
   contrasenia VARCHAR(50),

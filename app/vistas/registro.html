@@ -20,27 +20,27 @@
   <section>
     <div class="form-box">
         <div class="form-value">
-            <form action="">
+            <form action="/registro" method="post">
                 <h2 >Registrate</h2>
                 <div class="inputbox">
                     <ion-icon name="person"></ion-icon>
-                    <input type="email" required>
+                    <input type="text" name="nombre" required>
                     <label for="">Nombre de usuario</label>
                 </div>
                 <div class="inputbox">
                     <ion-icon name="lock-closed-outline"></ion-icon>
-                    <input type="password" required>
+                    <input type="password" name="contrasenia" required>
                     <label for="">Contraseña</label>
                 </div>
                 <div class="">
-                  <select name="" class="inputbox">
-                    <option value = "0" selected disabled>Sexo</option>
+                  <select name="sexo" class="inputbox" >
+                    <option value = "0" selected disabled >Sexo</option>
                     <option value="1">Mujer</option>
                     <option value="2">Hombre</option>
                   </select>
                 </div>
 
-                <button> <a href="{{ url_for('inicio') }}">Registrarme</a></button>
+                <button type="submit">Registrarme</button>
                 <br>
             </form>
         </div>
