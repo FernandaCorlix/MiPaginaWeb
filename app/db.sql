@@ -20,3 +20,11 @@ CREATE TABLE jugadores (
   FOREIGN KEY (EquipoID) REFERENCES Equipo(EquipoID)
 );
 
+-- Create the lista de posiciones
+CREATE TABLE list (
+  id INT AUTO_INCREMENT  PRIMARY KEY ,
+  victoria INT,
+  derrota INT,
+  EquipoID INT,
+  FOREIGN KEY (EquipoID) REFERENCES Equipo(EquipoID)
+);
