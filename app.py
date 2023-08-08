@@ -31,7 +31,7 @@ def registro():
         conexion = connectionPool.get_connection()
         try:
             cursor = conexion.cursor()
-            sql = "INSERT INTO Jugadores (NombreUsuario, contrasenia, sexo, esAdmin) VALUES (%s, %s, %s, %s)"
+            sql = "INSERT INTO jugadores (NombreUsuario, contrasenia, sexo, esAdmin) VALUES (%s, %s, %s, %s)"
             val = (usuario, contrasenia, sexo, False)
             cursor.execute(sql, val)
             conexion.commit()
@@ -46,7 +46,16 @@ def contraseña():
 
 @app.route('/jugadores')
 def jugadores():
-    return render_template('jugadores.html')
+    conexion = connectionPool.get_connection()
+    try:
+        cursor = conexion.cursor()
+        sql = "Select * from jugadores"
+        cursor.execute(sql)
+        listaJugadores = cursor.fetchall()
+    finally:
+        if conexion:
+            conexion.close()
+    return render_template('jugadores.html',listaJugadores = listaJugadores)
 
 @app.route('/listaDeEquipos')
 def listaDeEquipos():

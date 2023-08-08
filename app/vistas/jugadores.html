@@ -42,26 +42,31 @@
         <thead>
           <tr>
             <th scope="col">Nombre</th>
-            <th scope="col">Edad</th>
-            <th scope="col">Posición</th>
+            <th scope="col">Sexo</th>
+            <th scope="col">Equipo</th>
           </tr>
         </thead>
         <tbody>
+          {%for row in listaJugadores%}
           <tr>
-            <td>Jugador 1</td>
-            <td>25</td>
-            <td>Delantero</td>
+            <td>{{ row[1] }}</td>
+
+            <td>
+              {% if row[3] == 1 %}
+                Mujer
+              {% elif row[3] == 2 %}
+                Hombre
+              {% endif %}
+            </td>
+            <td>
+              {%if row[4] == 0%}
+              Sin Equipo
+              {% else %}
+              {{row[4]}}
+              {%endif%}
+            </td>
           </tr>
-          <tr>
-            <td>Jugador 2</td>
-            <td>23</td>
-            <td>Defensor</td>
-          </tr>
-          <tr>
-            <td>Jugador 3</td>
-            <td>27</td>
-            <td>Líbero</td>
-          </tr>
+          {% endfor %}
         </tbody>
       </table>
     </div>
