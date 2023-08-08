@@ -31,7 +31,7 @@ def registro():
         conexion = connectionPool.get_connection()
         try:
             cursor = conexion.cursor()
-            sql = "INSERT INTO Jugadores (NombreUsuario, contrasenia, sexo, esAdmin) VALUES (%s, %s, %s, %s)"
+            sql = "INSERT INTO jugadores (NombreUsuario, contrasenia, sexo, esAdmin) VALUES (%s, %s, %s, %s)"
             val = (usuario, contrasenia, sexo, False)
             cursor.execute(sql, val)
             conexion.commit()
@@ -49,7 +49,7 @@ def jugadores():
     conexion = connectionPool.get_connection()
     try:
         cursor = conexion.cursor()
-        sql = "Select * from Jugadores"
+        sql = "Select * from jugadores"
         cursor.execute(sql)
         listaJugadores = cursor.fetchall()
     finally:
@@ -70,9 +70,33 @@ def listaDeEquipos():
             conexion.close()
     return render_template('listaDeEquipos.html', listaEquipos = listaEquipos)
 
-@app.route('/crearEquipo')
+@app.route('/crearEquipo', methods=['GET', 'POST'])
 def crearEquipo():
-    return render_template('crearEquipo.html')
+    if request.method == 'GET':
+        return render_template('crearEquipo.html')
+    elif request.method == 'POST':
+        conexion = connectionPool.get_connection()
+        if conexion is None:
+            return "Unable to acquire a database connection"
+    
+        cursor = conexion.cursor()
+        nombreEquipo = request.form['nombre']
+        sql = "Select * from Equipo where nombreEquipo = %s"
+        cursor.execute(sql,(nombreEquipo,))
+        Equipos = cursor.fetchall()
+        if len(Equipos) > 0:
+            if conexion:
+                conexion.close()
+            #Equipo ya existe
+            return "El equipo ya existe"
+        else:
+            print("Llegue aqui")
+            sql = "Insert into Equipo (nombreEquipo) VALUES (%s)"
+            cursor.execute(sql,(nombreEquipo,))
+            conexion.commit()
+            if conexion:
+                conexion.close()
+            return "Equipo Registrado"   
 
 if __name__ == '__main__':
     app.run(debug=True)
