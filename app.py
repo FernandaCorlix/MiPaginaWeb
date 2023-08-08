@@ -31,7 +31,7 @@ def registro():
         conexion = connectionPool.get_connection()
         try:
             cursor = conexion.cursor()
-            sql = "INSERT INTO jugadores (NombreUsuario, contrasenia, sexo, esAdmin) VALUES (%s, %s, %s, %s)"
+            sql = "INSERT INTO Jugadores (NombreUsuario, contrasenia, sexo, esAdmin) VALUES (%s, %s, %s, %s)"
             val = (usuario, contrasenia, sexo, False)
             cursor.execute(sql, val)
             conexion.commit()
@@ -49,7 +49,7 @@ def jugadores():
     conexion = connectionPool.get_connection()
     try:
         cursor = conexion.cursor()
-        sql = "Select * from jugadores"
+        sql = "Select * from Jugadores"
         cursor.execute(sql)
         listaJugadores = cursor.fetchall()
     finally:
@@ -59,7 +59,20 @@ def jugadores():
 
 @app.route('/listaDeEquipos')
 def listaDeEquipos():
-    return render_template('listaDeEquipos.html')
+    conexion = connectionPool.get_connection()
+    try:
+        cursor = conexion.cursor()
+        sql = "Select * from Equipo"
+        cursor.execute(sql)
+        listaEquipos = cursor.fetchall()
+    finally:
+        if conexion:
+            conexion.close()
+    return render_template('listaDeEquipos.html', listaEquipos = listaEquipos)
+
+@app.route('/crearEquipo')
+def crearEquipo():
+    return render_template('crearEquipo.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
