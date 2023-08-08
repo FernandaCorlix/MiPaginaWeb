@@ -44,6 +44,7 @@
             <th scope="col">Equipo</th>
             <th scope="col">Ganados</th>
             <th scope="col">Perdidos</th>
+            <th scope ="col"> </th>
           </tr>
         </thead>
         <tbody>
@@ -52,7 +53,15 @@
             <td>{{ row[1] }}</td>
             <td></td>
             <td></td>
+            <td>
+              <form action="/listaDeEquipos/borrar/{{row[0]}}" method="post">
+                <button type="submit">Borrar</button>
+              </form>
+            </td>
           </tr>
+          
+
+          
           {% endfor %}
           <tr>
             <td colspan="3" class="text-left">

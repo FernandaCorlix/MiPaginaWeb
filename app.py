@@ -70,6 +70,19 @@ def listaDeEquipos():
             conexion.close()
     return render_template('listaDeEquipos.html', listaEquipos = listaEquipos)
 
+@app.route('/listaDeEquipos/borrar/<int:equipo_id>', methods=['POST'])
+def borrarEquipo(equipo_id):
+    conexion =connectionPool.get_connection()
+    try:
+        cursor = conexion.cursor()
+        sql = "Delete from Equipo where EquipoID = (%s)"
+        cursor.execute(sql,(equipo_id,))
+        conexion.commit()
+    finally:
+        if conexion:
+            conexion.close()
+    return redirect('/listaDeEquipos')
+
 @app.route('/crearEquipo', methods=['GET', 'POST'])
 def crearEquipo():
     if request.method == 'GET':
@@ -96,7 +109,7 @@ def crearEquipo():
             conexion.commit()
             if conexion:
                 conexion.close()
-            return "Equipo Registrado"   
+            return redirect("/listaDeEquipos")  
 
 if __name__ == '__main__':
     app.run(debug=True)
