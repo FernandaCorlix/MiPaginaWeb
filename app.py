@@ -75,6 +75,8 @@ def borrarEquipo(equipo_id):
     conexion =connectionPool.get_connection()
     try:
         cursor = conexion.cursor()
+        sqlJug = "UPDATE jugadores set EquipoID = NULL where EquipoID = %s"
+        cursor.execute(sqlJug,(equipo_id,))
         sql = "Delete from Equipo where EquipoID = (%s)"
         cursor.execute(sql,(equipo_id,))
         conexion.commit()
@@ -138,6 +140,7 @@ def borrarEquipoJugador(jugador_id):
         if conexion:
             conexion.close()
     return redirect(request.referrer or '/listaDeEquipos')    
+    
 @app.route('/crearEquipo', methods=['GET', 'POST'])
 def crearEquipo():
     if request.method == 'GET':
