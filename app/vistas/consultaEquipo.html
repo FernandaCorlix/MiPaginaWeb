@@ -18,6 +18,21 @@
   </style>
   
   <title>Lista de equipos</title>
+
+  <script>
+        function cambiarForm() {
+      var form1 = document.getElementById("tablaJugadores");
+      var form2 = document.getElementById("agregarJugadores");
+      
+      if (form1.style.display === "none") {
+        form1.style.display = "block";
+        form2.style.display = "none";
+      } else {
+        form1.style.display = "none";
+        form2.style.display = "block";
+      }
+    }
+  </script>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -36,29 +51,25 @@
     </div>
   </nav>
 
+  <h1>Equipo: "{{nombreEquipo}}"</h1>
   <div class="container">
-    <div class="table-container">
+    <div class="table-container" id = "tablaJugadores">
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">Equipo</th>
+            <th scope="col">Jugadores</th>
             <th scope="col"></th>
             <th scope="col"></th>
             <th scope ="col"></th>
           </tr>
         </thead>
         <tbody>
-          {%for row in listaEquipos%}
+          {%for jugador in listaJugadores%}
           <tr>
-            <td>{{ row[1] }}</td>
+            <td>{{ jugador[1] }}</td>
             <td>
-              <form action="/listaDeEquipos/consultar/{{row[0]}}" method="get">
-                <button type="submit">Ver Equipo</button>
-              </form>
-            </td>
-            <td>
-              <form action="/listaDeEquipos/borrar/{{row[0]}}" method="post">
-                <button type="submit">Borrar</button>
+              <form action="{{url_for('borrarEquipoJugador',jugador_id=jugador[0])}}" method="post">
+                <button type="submit">Eliminar</button>
               </form>
             </td>
           </tr>
@@ -68,14 +79,33 @@
           {% endfor %}
           <tr>
             <td colspan="3" class="text-left">
-              <button name="crear equipo"  class="btn btn-primary"> <a class="nav-link" href="{{ url_for('crearEquipo') }}">Crear Equipo</a></button>
+              <button onclick="cambiarForm()" name="agregar Jugador"  class="btn btn-primary"> <a class="nav-link" >Agregar Jugadores</a></button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
+    <div class="container" style="display:none" id = "agregarJugadores">
+        <form action="{{ url_for('agregarJugadores', equipo_id=equipo_id) }}" method="post">
+            <h1>Selecciona jugadores para agregar al Equipo</h1>
+            <p>(Si agregas un jugador que ya pertenecía a otro equipo, se cambiará a este)</p>
+            
+            <!-- Loop through jugadoresDisponibles and create a checkbox for each player -->
+            {% for jugador in jugadoresDisponibles %}
+            <div>
+                <label>
+                    <input type="checkbox" name="jugadores_seleccionados" value="{{jugador[0]}}">
+                    {{jugador[1]}}
+                </label>
+            </div>
+            {% endfor %}
+            
+            <button type="submit">Agregar</button>
+        </form>
+        
+    <button onclick="cambiarForm()">Cancelar</button>
+</div>
   </div>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 </html>
